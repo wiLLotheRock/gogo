@@ -155,7 +155,9 @@ void QuickSort<T> :: Reduce(T *A,int inicio,int final){
 int main(){
     int A[100];
     int n;
+    cout<<"Ingresa el total de datos a ingresar: ";
     cin>>n;
+    cout<<"Ingresa los datos: ";
     for(int i = 0; i < n; i++){
         cin>>A[i];
         cout<<endl;       
