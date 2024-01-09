@@ -72,6 +72,33 @@ void selecdir<T> :: Ordena(T *A,int n){
     }
 }
 
+template <class T>
+class ShellSort : public Ordenador<T>{
+    public:
+        void Ordena(T *A, int n);
+};
+
+template <class T>
+void ShellSort<T> :: Ordena(T *A,int n){
+    int k=n+1;
+    while(k>1)
+    {
+        k=k/2;
+        int cen=1;
+        while(cen==1)
+        {
+            cen=0;
+            for(int i=0;i<n-k;i++)
+            {
+                if(A[i]>A[i+k])
+                {
+                    this->Intercambia(A,i,i+k);
+                    cen=1;
+                }
+            }
+        }
+    }
+}
 
 int main(){
     int A[100];
@@ -90,10 +117,15 @@ int main(){
     InterDirIz<int> objIDD;
     //objIDD.Ordena(A,n);
 
-    //seleccion directa
+    //intercambio por seleccion directa
     selecdir<int> objSD;
-    objSD.Ordena(A,n);
+    //objSD.Ordena(A,n);
 
+    //shell sort
+    ShellSort<int> objSS;
+    objSS.Ordena(A,n);
+
+    
     cout<<"\nDatos ordenados"<<endl;
     for(int i = 0; i < n; i++){
         cout<<A[i]<<endl; 
