@@ -72,7 +72,6 @@ void selecdir<T> :: Ordena(T *A,int n){
     }
 }
 
-
 int main(){
     int A[100];
     int n;
@@ -81,10 +80,15 @@ int main(){
         cin>>A[i];
         cout<<endl;       
     }
-    
+
+    //intercambio directo por derecha    
+    InterDirDer<int> objDDD;
+    objDDD.Ordena(A,n);
+
+    //intercambio directo por izquierda
     InterDirIz<int> objIDD;
     objIDD.Ordena(A,n);
-
+    
     cout<<"\nDatos ordenados"<<endl;
     for(int i = 0; i < n; i++){
         cout<<A[i]<<endl; 
