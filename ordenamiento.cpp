@@ -47,6 +47,32 @@ void InterDirIz<T> :: Ordena(T *A, int n){
                 this->Intercambia(A,j,j-1);
 }
 
+template <class T>
+class selecdir : public Ordenador<T>{
+    public:
+        void Ordena(T *A, int n);
+};
+
+template <class T>
+void selecdir<T> :: Ordena(T *A,int n){
+    for(int i=0;i<n-1;i++)
+    {
+        int menor=A[i];
+        int k=i;
+        for(j=i+1;j<n;j++)
+        {
+            if(menor>A[j])
+            {
+                menor=A[j];
+                k=j;
+            }
+        }
+        A[k]=A[i];
+        A[i]=menor;
+    }
+}
+
+
 int main(){
     int A[100];
     int n;
