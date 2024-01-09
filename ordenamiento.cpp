@@ -100,6 +100,58 @@ void ShellSort<T> :: Ordena(T *A,int n){
     }
 }
 
+template <class T>
+class QuickSort : public Ordenador<T>{
+    public:
+        void Ordena(T *A, int n);
+        void Reduce(T *A,int inicio,int final);
+};
+
+template <class T>
+void QuickSort<T> :: Ordena(T *A,int n){
+    Reduce(A,0,n);
+}
+
+template <class T>
+void QuickSort<T> :: Reduce(T *A,int inicio,int final){
+    int izq=inicio;
+    int der=final;
+    int pos=izq;
+    int cen=1;
+    while(cen==1)
+    {
+        cen=0;
+        while((A[pos]<=A[der])&&(pos!=der))
+        {
+            der--;
+        }
+        if(pos!=der)
+        {
+            this->Intercambia(A,pos,der);
+            pos=der;
+            while((A[pos]>=A[izq])&&(pos!=izq))
+            {
+                izq++;
+            }
+            if(pos!=izq)
+            {
+                this->Intercambia(A,pos,izq);
+                pos=izq;
+                cen=1;
+            }
+        }
+        if(pos-1>inicio)
+        {
+            Reduce(A,inicio,pos-1);
+        }
+        if(pos+1<inicio)
+        {
+            Reduce(A,pos+1,final);
+        }
+    }
+}
+
+
 int main(){
     int A[100];
     int n;
@@ -123,9 +175,12 @@ int main(){
 
     //shell sort
     ShellSort<int> objSS;
-    objSS.Ordena(A,n);
+    //objSS.Ordena(A,n);
 
-    
+    //quick sort
+    QuickSort<int> objQS;
+    objQS.Ordena(A,n);
+
     cout<<"\nDatos ordenados"<<endl;
     for(int i = 0; i < n; i++){
         cout<<A[i]<<endl; 
