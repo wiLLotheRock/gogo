@@ -39,8 +39,7 @@ int main()
     cin>>n;
     cout<<"Ingresa los datos: ";
     for(int i = 0; i < n; i++){
-        cin>>A[i];
-        cout<<endl;       
+        cin>>A[i];      
     }
     cout<<"Ingrese el dato que quiere encontrar: ";
     cin>>dato;
