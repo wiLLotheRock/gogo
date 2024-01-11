@@ -109,7 +109,7 @@ class QuickSort : public Ordenador<T>{
 
 template <class T>
 void QuickSort<T> :: Ordena(T *A,int n){
-    Reduce(A,0,n);
+    Reduce(A,0,n-1);
 }
 
 template <class T>
@@ -185,7 +185,7 @@ int main(){
 
     cout<<"\nDatos ordenados"<<endl;
     for(int i = 0; i < n; i++){
-        cout<<A[i]<<endl; 
+        cout<<A[i]<<" "; 
     }
     return 0;
 }
