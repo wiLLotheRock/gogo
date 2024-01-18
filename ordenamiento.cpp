@@ -159,8 +159,7 @@ int main(){
     cin>>n;
     cout<<"Ingresa los datos: ";
     for(int i = 0; i < n; i++){
-        cin>>A[i];
-        cout<<endl;       
+        cin>>A[i];       
     }
 
     //intercambio directo por derecha    
