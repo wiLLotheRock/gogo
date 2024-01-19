@@ -1,4 +1,7 @@
 #include<bits/stdc++.h>
+#ifndef ORDENAMIENTO_H
+#define ORDENAMIENTO_H
+
 
 using namespace std;
 
@@ -10,6 +13,36 @@ class Ordenador{
         void Intercambia(T *A, int ind1, int ind2);
 };
 
+template <class T>
+class InterDirDer : public Ordenador<T>{
+    public:
+        void Ordena(T *A, int n);
+};
+
+template <class T>
+class InterDirIz : public Ordenador<T>{
+    public:
+        void Ordena(T *A, int n);
+};
+
+template <class T>
+class selecdir : public Ordenador<T>{
+    public:
+        void Ordena(T *A, int n);
+};
+
+template <class T>
+class ShellSort : public Ordenador<T>{
+    public:
+        void Ordena(T *A, int n);
+};
+
+template <class T>
+class QuickSort : public Ordenador<T>{
+    public:
+        void Ordena(T *A, int n);
+        void Reduce(T *A,int inicio,int final);
+};
 
 template <class T>
 void Ordenador<T> :: Intercambia(T *A, int ind1, int ind2){
@@ -20,24 +53,12 @@ void Ordenador<T> :: Intercambia(T *A, int ind1, int ind2){
 }
 
 template <class T>
-class InterDirDer : public Ordenador<T>{
-    public:
-        void Ordena(T *A, int n);
-};
-
-template <class T>
 void InterDirDer<T> :: Ordena(T *A, int n){
     for(int i = 0; i < n; i++)
         for(int j = 0; j < n-i; j++)
             if(A[j] > A[j+1])
                 this->Intercambia(A,j,j+1);
 }
-
-template <class T>
-class InterDirIz : public Ordenador<T>{
-    public:
-        void Ordena(T *A, int n);
-};
 
 template <class T>
 void InterDirIz<T> :: Ordena(T *A, int n){
@@ -47,11 +68,6 @@ void InterDirIz<T> :: Ordena(T *A, int n){
                 this->Intercambia(A,j,j-1);
 }
 
-template <class T>
-class selecdir : public Ordenador<T>{
-    public:
-        void Ordena(T *A, int n);
-};
 
 template <class T>
 void selecdir<T> :: Ordena(T *A,int n){
@@ -71,12 +87,6 @@ void selecdir<T> :: Ordena(T *A,int n){
         A[i]=menor;
     }
 }
-
-template <class T>
-class ShellSort : public Ordenador<T>{
-    public:
-        void Ordena(T *A, int n);
-};
 
 template <class T>
 void ShellSort<T> :: Ordena(T *A,int n){
@@ -100,12 +110,6 @@ void ShellSort<T> :: Ordena(T *A,int n){
     }
 }
 
-template <class T>
-class QuickSort : public Ordenador<T>{
-    public:
-        void Ordena(T *A, int n);
-        void Reduce(T *A,int inicio,int final);
-};
 
 template <class T>
 void QuickSort<T> :: Ordena(T *A,int n){
@@ -151,40 +155,4 @@ void QuickSort<T> :: Reduce(T *A,int inicio,int final){
     }
 }
 
-
-int main(){
-    int A[100];
-    int n;
-    cout<<"Ingresa el total de datos a ingresar: ";
-    cin>>n;
-    cout<<"Ingresa los datos: ";
-    for(int i = 0; i < n; i++){
-        cin>>A[i];       
-    }
-
-    //intercambio directo por derecha    
-    InterDirDer<int> objDDD;
-    //objDDD.Ordena(A,n);
-
-    //intercambio directo por izquierda
-    InterDirIz<int> objIDD;
-    //objIDD.Ordena(A,n);
-
-    //intercambio por seleccion directa
-    selecdir<int> objSD;
-    //objSD.Ordena(A,n);
-
-    //shell sort
-    ShellSort<int> objSS;
-    //objSS.Ordena(A,n);
-
-    //quick sort
-    QuickSort<int> objQS;
-    objQS.Ordena(A,n);
-
-    cout<<"\nDatos ordenados"<<endl;
-    for(int i = 0; i < n; i++){
-        cout<<A[i]<<" "; 
-    }
-    return 0;
-}
+#endif

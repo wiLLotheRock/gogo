@@ -1,3 +1,3 @@
-g++ -c ordenamiento.cpp
-g++ ordenamiento.o -o ordenamiento
-start cmd /k "ordenamiento && pause && exit"
+g++ -c main.cpp
+g++ main.o -o main
+start cmd /k "main && pause && exit"
